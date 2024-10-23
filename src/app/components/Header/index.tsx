@@ -16,7 +16,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-primary text-primary-foreground px-4">
+    <header className="text-primary-foreground px-6 py-3.5 bg-[#44D260]">
       <div className="container flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold">
           <Image
