@@ -121,6 +121,7 @@ function Step1() {
           <EmailInput
             label="Email"
             {...formik.getFieldProps('email')}
+            isRequired
             error={formik.touched.email && formik.errors.email}
           />
           <PasswordInput

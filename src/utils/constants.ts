@@ -3,6 +3,8 @@ export const NON_AUTH_ROUTES = [
   '/login',
   '/complete_registration',
   '/verify_email',
+  '/reset_password',
+  '/forgot_password',
 ];
 
 export const APP_NAME = 'Car.co.uk';
