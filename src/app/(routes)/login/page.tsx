@@ -37,7 +37,7 @@ export default function SignInForm() {
         footer={
           <AuthFooterText>
             Don&apos;t have an account?{' '}
-            <CustomLink href="/register">Register Interest</CustomLink>
+            <CustomLink href="/register">Register</CustomLink>
           </AuthFooterText>
         }
       >
@@ -45,11 +45,13 @@ export default function SignInForm() {
           <EmailInput
             label="Email"
             {...formik.getFieldProps('email')}
+            isRequired
             error={formik.touched.email && formik.errors.email}
           />
           <PasswordInput
             label="Password"
             {...formik.getFieldProps('password')}
+            isRequired
             error={formik.touched.password && formik.errors.password}
           />
         </FieldContainer>

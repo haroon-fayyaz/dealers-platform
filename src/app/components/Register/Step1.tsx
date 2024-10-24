@@ -57,7 +57,7 @@ function Step1() {
   return (
     <form onSubmit={formik.handleSubmit}>
       <FormWrapper
-        title="Register Interest"
+        title="Register"
         footer={
           <AuthFooterText>
             Already have an account?&nbsp;
@@ -84,6 +84,7 @@ function Step1() {
                 value="individual"
                 id="individual"
                 optionHint="(For a person looking to list a one off car sale)"
+                labelProps={{ className: 'text-black font-normal' }}
               />
             </CustomRadioGroup>
           </FieldWrapper>
@@ -125,11 +126,13 @@ function Step1() {
           <PasswordInput
             label="Password"
             {...formik.getFieldProps('password')}
+            isRequired
             error={formik.touched.password && formik.errors.password}
           />
           <PasswordInput
             label="Confirm Password"
             {...formik.getFieldProps('confirm_password')}
+            isRequired
             error={
               formik.touched.confirm_password && formik.errors.confirm_password
             }

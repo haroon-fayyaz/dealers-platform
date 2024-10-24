@@ -51,11 +51,13 @@ export default function ForgotPassword() {
           <PasswordInput
             label="Password"
             {...formik.getFieldProps('password')}
+            isRequired
             error={formik.touched.password && formik.errors.password}
           />
           <PasswordInput
             label="Confirm Password"
             {...formik.getFieldProps('confirm_password')}
+            isRequired
             error={
               formik.touched.confirm_password && formik.errors.confirm_password
             }
