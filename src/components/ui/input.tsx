@@ -6,7 +6,7 @@ import { ErrorHelperText } from '@/app/components/Common/ErrorHelperText';
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  error?: string;
+  error?: string | false | undefined;
   onClickIcon?: () => void;
   icon?: React.ReactNode;
 }
@@ -14,8 +14,8 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, error, onClickIcon, icon, ...props }, ref) => {
     return (
-      <div className="relative">
-        <div className="relative">
+      <div className={icon ? 'relative' : ''}>
+        <div className={icon ? 'relative' : ''}>
           <input
             type={type}
             className={cn(

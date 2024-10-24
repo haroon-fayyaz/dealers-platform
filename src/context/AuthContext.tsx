@@ -1,12 +1,26 @@
-import { createContext, useState, useContext, useEffect } from 'react';
+'use client';
 
-const AuthContext = createContext({});
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+interface AuthContextType {
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Fetch user session from your backend
     const checkUserSession = async () => {
       const res = await fetch('/api/auth/session');
       const session = await res.json();
@@ -23,4 +37,10 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = (): AuthContextType => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};

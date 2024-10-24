@@ -1,12 +1,25 @@
+import React from 'react';
 import { RadioGroup } from '@/components/ui/radio-group';
 import { CustomLabel } from './LabelInput';
+import { RadioGroupProps } from '@radix-ui/react-radio-group';
+import { RadioGroupItemProps } from '@radix-ui/react-radio-group';
 
 export const CustomRadioGroup = (props: RadioGroupProps) => (
   <RadioGroup className="space-y-0" {...props} />
 );
 
-export const withLabelAndRadioGroupItem = (Component) => {
-  const WrappedComponent = ({
+interface WithLabelAndRadioGroupItemProps extends RadioGroupItemProps {
+  label: string;
+  isRequired?: boolean;
+  optionHint?: string;
+  wrapperClassName?: string;
+  labelProps?: Record<string, unknown>;
+}
+
+export const withLabelAndRadioGroupItem = (
+  Component: React.ComponentType<RadioGroupItemProps>
+) => {
+  const WrappedComponent: React.FC<WithLabelAndRadioGroupItemProps> = ({
     label,
     isRequired = false,
     optionHint = '',

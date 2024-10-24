@@ -34,7 +34,6 @@ export default function SignInForm() {
     <form onSubmit={formik.handleSubmit}>
       <FormWrapper
         title="Sign In"
-        buttonText="Login"
         footer={
           <AuthFooterText>
             Don&apos;t have an account?{' '}

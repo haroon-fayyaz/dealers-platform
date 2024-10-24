@@ -1,7 +1,7 @@
 'use client';
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import React, { useState, ReactNode } from 'react';
+import { Input, InputProps } from '@/components/ui/input';
+import { Button, ButtonProps } from '@/components/ui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -13,24 +13,17 @@ import {
 } from '@/components/ui/card';
 import { withLabelAndInput } from '@/app/components/Common/LabelInput';
 
-export const EmailInput = withLabelAndInput(({ onChange, ...props }) => (
-  <Input
-    type="email"
-    onChange={onChange}
-    placeholder="Email"
-    required
-    {...props}
-  />
+export const EmailInput = withLabelAndInput((props: InputProps) => (
+  <Input type="email" placeholder="Email" required {...props} />
 ));
 
-export const PasswordInput = withLabelAndInput(({ onChange, ...props }) => {
+export const PasswordInput = withLabelAndInput((props: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="relative">
       <Input
         type={showPassword ? 'text' : 'password'}
         placeholder="Password"
-        onChange={onChange}
         required
         onClickIcon={() => setShowPassword(!showPassword)}
         icon={
@@ -45,7 +38,17 @@ export const PasswordInput = withLabelAndInput(({ onChange, ...props }) => {
   );
 });
 
-export const FormWrapper = ({ children, title, footer }) => (
+interface FormWrapperProps {
+  children: ReactNode;
+  title: string;
+  footer?: ReactNode;
+}
+
+export const FormWrapper: React.FC<FormWrapperProps> = ({
+  children,
+  title,
+  footer,
+}) => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-[60px]">
     <Card className="w-full max-w-2xl">
       <CardHeader>
@@ -55,13 +58,22 @@ export const FormWrapper = ({ children, title, footer }) => (
       </CardHeader>
       <CardContent className="">{children}</CardContent>
     </Card>
-    <AuthFooter>
-      <div className="py-6">{footer}</div>
-    </AuthFooter>
+    {footer && (
+      <AuthFooter>
+        <div className="py-6">{footer}</div>
+      </AuthFooter>
+    )}
   </div>
 );
 
-export const AuthButton = ({ children, ...props }) => (
+interface AuthButtonProps extends ButtonProps {
+  children: ReactNode;
+}
+
+export const AuthButton: React.FC<AuthButtonProps> = ({
+  children,
+  ...props
+}) => (
   <Button
     {...props}
     className={`w-full bg-custom-blue hover:bg-custom-blue/80 font-semibold mt-8 ${props.className}`}
@@ -71,11 +83,19 @@ export const AuthButton = ({ children, ...props }) => (
   </Button>
 );
 
-export const AuthFooterText = ({ children }) => (
-  <p className="text-sm text-{##272B41}">{children}</p>
+interface AuthFooterTextProps {
+  children: ReactNode;
+}
+
+export const AuthFooterText: React.FC<AuthFooterTextProps> = ({ children }) => (
+  <p className="text-sm text-custom-gray">{children}</p>
 );
 
-export const AuthFooter = ({ children }) => (
+interface AuthFooterProps {
+  children: ReactNode;
+}
+
+export const AuthFooter: React.FC<AuthFooterProps> = ({ children }) => (
   <CardFooter className="flex flex-col items-center space-y-4">
     {children}
   </CardFooter>

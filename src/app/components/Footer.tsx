@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { APP_NAME } from '@/utils/constants';
+import { APP_NAME, NON_AUTH_ROUTES } from '@/utils/constants';
 
-const NON_FOOTER_ROUTES = ['/register', '/login', '/complete_registration'];
 export default function Footer() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
@@ -18,7 +17,7 @@ export default function Footer() {
     setCurrentYear(new Date().getFullYear().toString());
   }, [mounted]);
 
-  if (!mounted || NON_FOOTER_ROUTES.includes(pathname)) {
+  if (!mounted || NON_AUTH_ROUTES.includes(pathname)) {
     return null;
   }
 
