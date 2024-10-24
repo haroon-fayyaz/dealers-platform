@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback, KeyboardEvent } from 'react';
 import { Input } from '@/components/ui/input';
-import { AuthFooter, AuthFooterText, FormWrapper } from '@/app/components/Auth';
+import { AuthFooterText, FormWrapper } from '@/app/components/Auth';
 import {
   FieldContainer,
   FieldWrapper,
@@ -55,7 +55,20 @@ export default function OTPCodeEntry() {
   }
 
   return (
-    <FormWrapper title="OTP Code">
+    <FormWrapper
+      title="OTP Code"
+      footer={
+        <AuthFooterText>
+          If you didn&apos;t get the code{' '}
+          <button
+            onClick={sendOtp}
+            className="text-sm text-custom-blue hover:underline font-semibold"
+          >
+            Click Here
+          </button>
+        </AuthFooterText>
+      }
+    >
       <FieldContainer wrapperClassName="mt-4">
         <p className="text-sm text-custom-gray">
           Please enter the OTP code we&apos;ve sent to your email.
@@ -77,21 +90,6 @@ export default function OTPCodeEntry() {
             />
           ))}
         </FieldWrapper>
-        <FieldContainer wrapperClassName="mt-8">
-          <FieldWrapper>
-            <AuthFooter>
-              <AuthFooterText>
-                If you didn&apos;t get the code{' '}
-                <button
-                  onClick={sendOtp}
-                  className="text-sm text-custom-blue hover:underline font-semibold"
-                >
-                  Click Here
-                </button>
-              </AuthFooterText>
-            </AuthFooter>
-          </FieldWrapper>
-        </FieldContainer>
       </FieldContainer>
     </FormWrapper>
   );

@@ -56,13 +56,13 @@ export const FormWrapper: React.FC<FormWrapperProps> = ({
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="">{children}</CardContent>
+      <CardContent>{children}</CardContent>
+      {footer && (
+        <AuthFooter>
+          <div className="mt-8">{footer}</div>
+        </AuthFooter>
+      )}
     </Card>
-    {footer && (
-      <AuthFooter>
-        <div className="py-6">{footer}</div>
-      </AuthFooter>
-    )}
   </div>
 );
 

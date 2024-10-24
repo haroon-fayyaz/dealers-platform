@@ -56,7 +56,7 @@ export default function SignInForm() {
         <FieldContainer>
           <FieldWrapper wrapperClassName="flex items-center justify-between">
             <CustomCheckbox label="Remember me" id="remember" />
-            <CustomLink href="/forgot-password">Forgot Password?</CustomLink>
+            <CustomLink href="/forgot_password">Forgot Password?</CustomLink>
           </FieldWrapper>
         </FieldContainer>
         <AuthButton type="submit">Login</AuthButton>
