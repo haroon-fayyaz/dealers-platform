@@ -44,7 +44,7 @@ export default function ForgotPassword() {
       >
         <FieldContainer wrapperClassName="mt-4">
           <p className="text-sm text-custom-gray">
-            Enter registered email address to change your password.
+            New password must be different from previous password.
           </p>
         </FieldContainer>
         <FieldContainer wrapperClassName="mt-8">
