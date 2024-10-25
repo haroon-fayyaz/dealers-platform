@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 import { RadioGroupItem } from '@/components/ui/radio-group';
 import {
@@ -21,6 +22,7 @@ import { PASSWORD_REGEX } from '@/utils/constants';
 const LabeledRadioGroupItem = withLabelAndRadioGroupItem(RadioGroupItem);
 
 function Step1() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       register_as: 'dealer',
@@ -51,7 +53,8 @@ function Step1() {
         .required('I Want To is required'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      router.push('/verify_email');
     },
   });
   return (

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
 import {
   Select,
@@ -22,6 +23,7 @@ const LabeledInput = withLabelAndInput(Input);
 const LabeledSelect = withLabelAndInput(Select);
 
 function Step2() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       company_name: '',
@@ -40,7 +42,8 @@ function Step2() {
       agree_to_terms: Yup.boolean().oneOf([true], 'Agree to Terms is required'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      router.push('/registration_successful');
     },
   });
 

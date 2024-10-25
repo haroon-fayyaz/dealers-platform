@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback, KeyboardEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { AuthFooterText, FormWrapper } from '@/app/components/Auth';
 import {
@@ -9,6 +10,7 @@ import {
 } from '@/app/components/Common/FieldWrapper';
 
 export default function OTPCodeEntry() {
+  const router = useRouter();
   const [otp, setOtp] = useState(Array(6).fill(''));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -52,6 +54,7 @@ export default function OTPCodeEntry() {
 
   function validateOtp(otp: string) {
     console.log('validateOtp', otp);
+    router.push('/complete_registration');
   }
 
   return (

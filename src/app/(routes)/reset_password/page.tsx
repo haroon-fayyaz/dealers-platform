@@ -1,6 +1,7 @@
 'use client';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/navigation';
 import {
   AuthButton,
   AuthFooterText,
@@ -12,6 +13,7 @@ import { CustomLink } from '@/app/components/Common/CustomLink';
 import { PASSWORD_REGEX } from '@/utils/constants';
 
 export default function ForgotPassword() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       password: '',
@@ -29,7 +31,8 @@ export default function ForgotPassword() {
         .required('Confirm Password is required'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      router.push('/login');
     },
   });
   return (

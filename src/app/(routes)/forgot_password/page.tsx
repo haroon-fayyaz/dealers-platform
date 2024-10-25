@@ -1,6 +1,7 @@
 'use client';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/navigation';
 import {
   AuthButton,
   AuthFooterText,
@@ -11,17 +12,17 @@ import { FieldContainer } from '@/app/components/Common/FieldWrapper';
 import { CustomLink } from '@/app/components/Common/CustomLink';
 
 export default function ForgotPassword() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
     },
     validationSchema: Yup.object({
       email: Yup.string().required('Email is required'),
-      password: Yup.string().required('Password is required'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      router.push('/reset_password');
     },
   });
   return (
