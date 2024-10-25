@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 
 function Step3() {
   return (
-    <div className="flex flex-col items-center justify-center mt-[100px] bg-gray-100">
+    <div className="flex flex-col items-center min-h-[calc(100vh-var(--header-height,0px))] bg-gray-100 pt-[100px]">
       <div className="w-full max-w-2xl p-4 md:p-6 lg:p-8">
         <Card className="w-full">
           <FieldContainer wrapperClassName="text-center">
