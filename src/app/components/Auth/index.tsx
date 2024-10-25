@@ -53,9 +53,11 @@ export const FormWrapper: React.FC<FormWrapperProps> = ({
     <div className="w-full max-w-2xl p-4 md:p-6 lg:p-8">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle className="text-3xl font-semibold text-left">
-            {title}
-          </CardTitle>
+          {title && (
+            <CardTitle className="text-3xl font-semibold text-left">
+              {title}
+            </CardTitle>
+          )}
         </CardHeader>
         <CardContent>{children}</CardContent>
         {footer && (
