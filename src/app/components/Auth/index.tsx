@@ -49,20 +49,22 @@ export const FormWrapper: React.FC<FormWrapperProps> = ({
   title,
   footer,
 }) => (
-  <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-[60px]">
-    <Card className="w-full max-w-2xl">
-      <CardHeader>
-        <CardTitle className="text-3xl font-semibold text-left">
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>{children}</CardContent>
-      {footer && (
-        <AuthFooter>
-          <div className="mt-8">{footer}</div>
-        </AuthFooter>
-      )}
-    </Card>
+  <div className="flex flex-col items-center justify-center min-h-[calc(100vh-var(--header-height,0px))] bg-gray-100">
+    <div className="w-full max-w-2xl p-4 md:p-6 lg:p-8">
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-3xl font-semibold text-left">
+            {title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>{children}</CardContent>
+        {footer && (
+          <AuthFooter>
+            <div className="mt-8">{footer}</div>
+          </AuthFooter>
+        )}
+      </Card>
+    </div>
   </div>
 );
 

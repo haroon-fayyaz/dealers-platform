@@ -25,9 +25,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${kumbhSans.variable} antialiased bg-gray-100`}>
         <Header />
-        <div className="px-4 w-full">
-          <AuthProvider>{children}</AuthProvider>
-        </div>
+        <AuthProvider>
+          <div className="px-4 min-h-[calc(100vh-var(--header-height,0px))]">
+            {children}
+          </div>
+        </AuthProvider>
         <Footer />
       </body>
     </html>
